@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil - E-C virtual</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      color: #333;
+    }
+    header, footer {
+      background: #4f9dff;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      background: #357ae8;
+      color: #fff;
+      padding: 0.5rem;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    nav a:hover {
+      background: #285bb5;
+      text-decoration: underline;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 60vh;
+      padding: 2rem 1rem;
+    }
+    h2 {
+      color: #357ae8;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .profile-select-bar {
+      margin-bottom: 2rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 900px;
+    }
+    .product-card {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .product-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+    }
+    .product-card h3 {
+      margin: 0.5rem 0;
+      color: #357ae8;
+    }
+    .product-card span {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 0.5rem;
+    }
+    .product-card p {
+      margin: 0.5rem 0 0 0;
+      font-size: 1rem;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Projeto Carlos</h1>
+  </header>
+
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="perfil.html">Perfil</a>
+    <a href="contato.html">Contato</a>
+    <a href="index.html">Usuário</a>
+    <a href="login.html">Sair</a>
+  </nav>
+
+  <main>
+    <h2>Selecione seu tipo de perfil</h2>
+    <div class="profile-select-bar">
+      <label for="profileType">Tipo de usuário:</label>
+      <select id="profileType" onchange="showProfileProducts()">
+        <option value="">Selecione</option>
+        <option value="home">Usuário 1 - Casa</option>
+        <option value="party">Usuário 2 - Festa</option>
+        <option value="travel">Usuário 3 - Viagem</option>
+      </select>
+    </div>
+    <div class="products-grid" id="profileProductsGrid">
+      
+    </div>
+  </main>
+
+  <footer>
+    <span>&copy; 2025 E-C virtual</span>
+  </footer>
+
+  <script>
+    
+    const profileProducts = {
+      home: [
+        {
+          name: "Sofá Retrátil",
+          description: "Confortável e moderno para sua sala.",
+          image: "https://img.icons8.com/color/100/sofa.png"
+        },
+        {
+          name: "Cafeteira Elétrica",
+          description: "Prepare cafés deliciosos rapidamente.",
+          image: "https://img.icons8.com/color/100/coffee-maker.png"
+        },
+        {
+          name: "Smart TV 50''",
+          description: "Resolução 4K, acesso a apps e streaming.",
+          image: "https://img.icons8.com/color/100/tv.png"
+        }
+      ],
+      party: [
+        {
+          name: "Caixa de Som Bluetooth",
+          description: "Leve sua música para qualquer lugar.",
+          image: "https://img.icons8.com/color/100/speaker.png"
+        },
+        {
+          name: "Luzes de Festa",
+          description: "Ilumine e anime sua festa.",
+          image: "https://img.icons8.com/color/100/disco-ball.png"
+        },
+        {
+          name: "Kit de Copos",
+          description: "Perfeito para servir seus convidados.",
+          image: "https://img.icons8.com/color/100/cocktail.png"
+        }
+      ],
+      travel: [
+        {
+          name: "Mala de Viagem",
+          description: "Resistente, leve e com rodinhas 360º.",
+          image: "https://img.icons8.com/color/100/suitcase.png"
+        },
+        {
+          name: "Guia de Viagem Europa",
+          description: "Dicas e roteiros para sua próxima aventura.",
+          image: "https://img.icons8.com/color/100/map.png"
+        },
+        {
+          name: "Fone Bluetooth",
+          description: "Som de alta qualidade e bateria duradoura.",
+          image: "https://img.icons8.com/color/100/headphones.png"
+        }
+      ]
+    };
+
+    function showProfileProducts() {
+      const type = document.getElementById('profileType').value;
+      const grid = document.getElementById('profileProductsGrid');
+      grid.innerHTML = '';
+
+      if (!type || !profileProducts[type]) {
+        grid.innerHTML = '<p>Selecione um tipo de usuário para ver os produtos recomendados.</p>';
+        return;
+      }
+
+      profileProducts[type].forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <img src="${product.image}" alt="${product.name}">
+          <h3>${product.name}</h3>
+          <p>${product.description}</p>
+        `;
+        grid.appendChild(card);
+      });
+    }
+  </script>
+</body>
+</html>
+  

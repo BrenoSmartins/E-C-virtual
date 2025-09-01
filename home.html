@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos - E-C virtual</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      color: #333;
+    }
+    header, footer {
+      background: #4f9dff;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      background: #357ae8;
+      color: #fff;
+      padding: 0.5rem;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    nav a:hover {
+      background: #285bb5;
+      text-decoration: underline;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 60vh;
+      padding: 2rem 1rem;
+    }
+    h2 {
+      color: #357ae8;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .filter-bar {
+      margin-bottom: 2rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 900px;
+    }
+    .product-card {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .product-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+    }
+    .product-card h3 {
+      margin: 0.5rem 0;
+      color: #357ae8;
+    }
+    .product-card span {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 0.5rem;
+    }
+    .product-card p {
+      margin: 0.5rem 0 0 0;
+      font-size: 1rem;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Projeto Carlos</h1>
+  </header>
+
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="perfil.html">Perfil</a>
+    <a href="contato.html">Contato</a>
+    <a href="index.html">Usuário</a>
+    <a href="login.html">Sair</a>
+  </nav>
+
+  <main>
+    <h2>Produtos</h2>
+    <div class="filter-bar">
+      <label for="category">Filtrar por categoria:</label>
+      <select id="category" onchange="filterProducts()">
+        <option value="all">Todos</option>
+        <option value="casa">Casa</option>
+        <option value="eletronicos">Eletrônicos</option>
+        <option value="viagem">Viagem</option>
+      </select>
+    </div>
+    <div class="products-grid" id="productsGrid">
+      
+    </div>
+  </main>
+
+  <footer>
+    <span>&copy; 2025 E-C virtual</span>
+  </footer>
+
+  <script>
+    
+    const products = [
+      {
+        name: "Sofá Retrátil",
+        category: "casa",
+        description: "Confortável e moderno para sua sala.",
+        image: "https://img.icons8.com/color/100/sofa.png"
+      },
+      {
+        name: "Smart TV 50''",
+        category: "eletronicos",
+        description: "Resolução 4K, acesso a apps e streaming.",
+        image: "https://img.icons8.com/color/100/tv.png"
+      },
+      {
+        name: "Fone Bluetooth",
+        category: "eletronicos",
+        description: "Som de alta qualidade e bateria duradoura.",
+        image: "https://img.icons8.com/color/100/headphones.png"
+      },
+      {
+        name: "Mala de Viagem",
+        category: "viagem",
+        description: "Resistente, leve e com rodinhas 360º.",
+        image: "https://img.icons8.com/color/100/suitcase.png"
+      },
+      {
+        name: "Cafeteira Elétrica",
+        category: "casa",
+        description: "Prepare cafés deliciosos rapidamente.",
+        image: "https://img.icons8.com/color/100/coffee-maker.png"
+      },
+      {
+        name: "Guia de Viagem Europa",
+        category: "viagem",
+        description: "Dicas e roteiros para sua próxima aventura.",
+        image: "https://img.icons8.com/color/100/map.png"
+      }
+    ];
+
+    
+    function filterProducts() {
+      const category = document.getElementById('category').value;
+      const grid = document.getElementById('productsGrid');
+      grid.innerHTML = '';
+
+      const filtered = category === 'all'
+        ? products
+        : products.filter(p => p.category === category);
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<p>Nenhum produto encontrado para esta categoria.</p>';
+        return;
+      }
+
+      filtered.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <img src="${product.image}" alt="${product.name}">
+          <h3>${product.name}</h3>
+          <span>Categoria: ${capitalize(product.category)}</span>
+          <p>${product.description}</p>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function capitalize(str) {
+      if (str === "casa") return "Casa";
+      if (str === "eletronicos") return "Eletrônicos";
+      if (str === "viagem") return "Viagem";
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    
+    window.onload = filterProducts;
+  </script>
+</body>
+</html>

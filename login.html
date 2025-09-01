@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - E-C virtual</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+        body {
+            background: #f0f2f5;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        header, footer {
+            background: #4f9dff;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            background: #357ae8;
+            color: #fff;
+            padding: 0.5rem;
+            text-align: center;
+        }
+        .login-container {
+            max-width: 400px;
+            margin: 3rem auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 2rem;
+        }
+        .login-container h2 {
+            margin-bottom: 1.5rem;
+            color: #357ae8;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+        }
+        label {
+            margin-bottom: 0.5rem;
+            color: #333;
+            display: block;
+        }
+        .form-group {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        input[type="email"],
+        input[type="password"] {
+            padding: 0.75rem;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .actions {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        button {
+            background: #357ae8;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+        .register-link {
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+        .register-link a {
+            color: #357ae8;
+            text-decoration: none;
+        }
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>E-C virtual - LOGIN</h1>
+    </header>
+    <nav>
+        <span>Bem-vindo! Faça login para continuar.</span>
+    </nav>
+   <div class="login-container">
+        <h2>Login</h2>
+        <form action="index.html" method="post" autocomplete="on">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required autocomplete="username">
+            </div>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required autocomplete="current-password">
+            </div>
+            <div class="actions">
+                <button type="submit">Entrar</button>
+                <span class="register-link">Não tem conta? <a href="register.html">Cadastre-se</a></span>
+            </div>
+        </form>
+    </div>
+    <footer>
+        <span>&copy; 2025 E-C virtual</span>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato - E-C virtual</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      color: #333;
+    }
+    header, footer {
+      background: #4f9dff;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      background: #357ae8;
+      color: #fff;
+      padding: 0.5rem;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    nav a:hover {
+      background: #285bb5;
+      text-decoration: underline;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      padding: 2rem 1rem;
+    }
+    .dev-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .dev-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid #357ae8;
+    }
+    .dev-card h2 {
+      color: #357ae8;
+      margin-bottom: 0.5rem;
+    }
+    .dev-info {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+    }
+    .dev-info a {
+      color: #357ae8;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .dev-info a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Projeto Carlos</h1>
+  </header>
+
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="perfil.html">Perfil</a>
+    <a href="contato.html">Contato</a>
+    <a href="index.html">Usuário</a>
+    <a href="login.html">Sair</a>
+  </nav>
+
+  <main>
+    <div class="dev-card">
+      <img src="img/Foto_perfil.jpg" alt="Foto de Breno Siqueira">
+      <h2>Breno Siqueira</h2>
+      <div class="dev-info"><strong>Email:</strong> <a href="mailto:brenoprofissional5@gmail.com">brenoprofissional5@gmail.com</a></div>
+      <div class="dev-info"><strong>Telefone:</strong> <a href="tel:82981316407">(82) 98131-6407</a></div>
+      <div class="dev-info"><strong>Localização:</strong> Maceió-AL</div>
+      <div class="dev-info"><strong>GitHub:</strong> <a href="https://github.com/BrenoSmartins" target="_blank">BrenoSmartins</a></div>
+      <div class="dev-info"><strong>Faculdade:</strong> Sistemas de Informação - CESMAC</div>
+    </div>
+  </main>
+
+  <footer>
+    <span>&copy; E-C virtual</span>
+  </footer>
+</body>
+</html>
