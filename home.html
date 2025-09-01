@@ -24,104 +24,86 @@
     <a href="index.html">Sair</a>
   </nav>
 
+  
   <main>
     <h2>Produtos</h2>
-    <div class="filter-bar">
-      <label for="category">Filtrar por categoria:</label>
-      <select id="category" onchange="filterProducts()">
-        <option value="all">Todos</option>
-        <option value="casa">Casa</option>
-        <option value="eletronicos">Eletrônicos</option>
-        <option value="viagem">Viagem</option>
-      </select>
-    </div>
-    <div class="products-grid" id="productsGrid">
-      
-    </div>
+    <div class="products-grid" id="productsGrid"></div>
   </main>
+ 
 
   <footer>
     <span>&copy; 2025 E-C virtual</span>
   </footer>
 
-  <script>
-    
-    const products = [
-      {
-        name: "Sofá Retrátil",
-        category: "casa",
-        description: "Confortável e moderno para sua sala.",
-        image: "https://img.icons8.com/color/100/sofa.png"
-      },
-      {
-        name: "Smart TV 50''",
-        category: "eletronicos",
-        description: "Resolução 4K, acesso a apps e streaming.",
-        image: "https://img.icons8.com/color/100/tv.png"
-      },
-      {
-        name: "Fone Bluetooth",
-        category: "eletronicos",
-        description: "Som de alta qualidade e bateria duradoura.",
-        image: "https://img.icons8.com/color/100/headphones.png"
-      },
-      {
-        name: "Mala de Viagem",
-        category: "viagem",
-        description: "Resistente, leve e com rodinhas 360º.",
-        image: "https://img.icons8.com/color/100/suitcase.png"
-      },
-      {
-        name: "Cafeteira Elétrica",
-        category: "casa",
-        description: "Prepare cafés deliciosos rapidamente.",
-        image: "https://img.icons8.com/color/100/coffee-maker.png"
-      },
-      {
-        name: "Guia de Viagem Europa",
-        category: "viagem",
-        description: "Dicas e roteiros para sua próxima aventura.",
-        image: "https://img.icons8.com/color/100/map.png"
-      }
-    ];
+<script>
+const products = [
+  {
+    name: "Sofá Retrátil",
+    category: "Casa",
+    description: "Confortável e moderno para sua sala.",
+    price: 1200.00,
+    image: "https://img.icons8.com/color/100/sofa.png"
+  },
+  {
+    name: "Smart TV 50''",
+    category: "Eletrônicos",
+    description: "Resolução 4K, acesso a apps e streaming.",
+    price: 2500.00,
+    image: "https://img.icons8.com/color/100/tv.png"
+  },
+  {
+    name: "Fone Bluetooth",
+    category: "Eletrônicos",
+    description: "Som de alta qualidade e bateria duradoura.",
+    price: 150.00,
+    image: "https://img.icons8.com/color/100/headphones.png"
+  },
+  {
+    name: "Mala de Viagem",
+    category: "Viagem",
+    description: "Resistente, leve e com rodinhas 360º.",
+    price: 300.00,
+    image: "https://img.icons8.com/color/100/suitcase.png"
+  },
+  {
+    name: "Cafeteira Elétrica",
+    category: "Casa",
+    description: "Prepare cafés deliciosos rapidamente.",
+    price: 200.00,
+    image: "https://img.icons8.com/color/100/coffee-maker.png"
+  },
+  {
+    name: "Guia de Viagem Europa",
+    category: "Viagem",
+    description: "Dicas e roteiros para sua próxima aventura.",
+    price: 80.00,
+    image: "https://img.icons8.com/color/100/map.png"
+  }
+];
 
-    
-    function filterProducts() {
-      const category = document.getElementById('category').value;
-      const grid = document.getElementById('productsGrid');
-      grid.innerHTML = '';
+function renderProducts() {
+  const grid = document.getElementById('productsGrid');
+  grid.innerHTML = '';
+  products.forEach(product => {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <span><strong>Categoria:</strong> ${product.category}</span>
+      <p>${product.description}</p>
+      <span><strong>Preço:</strong> R$ ${product.price.toFixed(2)}</span>
+      <button onclick="addToCart('${product.name}')">Adicionar ao carrinho</button>
+    `;
+    grid.appendChild(card);
+  });
+}
 
-      const filtered = category === 'all'
-        ? products
-        : products.filter(p => p.category === category);
+function addToCart(productName) {
+  alert(`"${productName}" adicionado ao carrinho!`);
+}
 
-      if (filtered.length === 0) {
-        grid.innerHTML = '<p>Nenhum produto encontrado para esta categoria.</p>';
-        return;
-      }
-
-      filtered.forEach(product => {
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        card.innerHTML = `
-          <img src="${product.image}" alt="${product.name}">
-          <h3>${product.name}</h3>
-          <span>Categoria: ${capitalize(product.category)}</span>
-          <p>${product.description}</p>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    function capitalize(str) {
-      if (str === "casa") return "Casa";
-      if (str === "eletronicos") return "Eletrônicos";
-      if (str === "viagem") return "Viagem";
-      return str.charAt(0).toUpperCase() + str.slice(1);
-    }
-
-    
-    window.onload = filterProducts;
-  </script>
+window.onload = renderProducts;
+</script>
 </body>
 </html>
