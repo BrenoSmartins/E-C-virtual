@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usuário - E-C virtual</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      color: #333;
+    }
+    header, footer {
+      background: #4f9dff;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      background: #357ae8;
+      color: #fff;
+      padding: 0.5rem;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    nav a:hover {
+      background: #285bb5;
+      text-decoration: underline;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 60vh;
+      padding: 2rem 1rem;
+    }
+    .user-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    .user-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid #357ae8;
+    }
+    .user-card h2 {
+      color: #357ae8;
+      margin-bottom: 0.5rem;
+    }
+    .user-info {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+    }
+    .cart-section {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      max-width: 400px;
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+    .cart-section h3 {
+      color: #357ae8;
+      margin-bottom: 1rem;
+    }
+    .cart-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .cart-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cart-list li:last-child {
+      border-bottom: none;
+    }
+    .item-name {
+      flex: 2;
+    }
+    .item-qtd {
+      flex: 1;
+      text-align: center;
+    }
+    .item-price {
+      flex: 1;
+      text-align: right;
+    }
+    .empty-cart {
+      color: #888;
+      font-style: italic;
+    }
+    .total-section {
+      margin-top: 1rem;
+      font-weight: bold;
+      text-align: right;
+    }
+    .shipping-section {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .shipping-section input[type="text"] {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .shipping-section button {
+      background: #357ae8;
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+    .shipping-cost {
+      color: #357ae8;
+      font-weight: bold;
+      margin-top: 0.5rem;
+      text-align: left;
+    }
+    .purchase-btn {
+      background: #4f9dff;
+      color: #fff;
+      border: none;
+      padding: 0.9rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      width: 100%;
+      margin-top: 1.5rem;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    .purchase-btn:hover {
+      background: #357ae8;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Projeto Carlos</h1>
+  </header>
+
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="perfil.html">Perfil</a>
+    <a href="contato.html">Contato</a>
+    <a href="usuario.html">Usuário</a>
+    <a href="index.html">Sair</a>
+  </nav>
+
+  <main>
+    <div class="user-card">
+      <img src="https://avatars.githubusercontent.com/u/114893803?v=4" alt="Foto do Usuário">
+      <h2>Fulano Ciclano</h2>
+      <div class="user-info"><strong>Email:</strong> fulano@email.com</div>
+      <div class="user-info"><strong>Telefone:</strong> (82) 91234-5678</div>
+      <div class="user-info"><strong>Endereço:</strong> Rua Exemplo, 123, Maceió-AL</div>
+    </div>
+
+    <section class="cart-section">
+      <h3>Meu Carrinho</h3>
+      <ul class="cart-list" id="cartList">
+
+      </ul>
+      <div class="total-section" id="totalSection"></div>
+      <div class="shipping-section">
+        <label for="cep">Calcule o frete (CEP):</label>
+        <input type="text" id="cep" placeholder="Digite seu CEP">
+        <button type="button" onclick="calculateShipping()">Calcular Frete</button>
+        <div class="shipping-cost" id="shippingCost"></div>
+      </div>
+      <button class="purchase-btn" onclick="finalizePurchase()">Finalizar Compra</button>
+    </section>
+  </main>
+
+  <footer>
+    <span>&copy; 2025 E-C virtual</span>
+  </footer>
+
+  <script>
+    
+    const cartItems = [
+      { name: "Sofá Retrátil", qtd: 1, price: 1200.00 },
+      { name: "Smart TV 50''", qtd: 1, price: 2500.00 },
+      { name: "Fone Bluetooth", qtd: 2, price: 150.00 }
+    ];
+
+    function renderCart() {
+      const cartList = document.getElementById('cartList');
+      const totalSection = document.getElementById('totalSection');
+      cartList.innerHTML = '';
+      let total = 0;
+
+      if (cartItems.length === 0) {
+        cartList.innerHTML = '<li class="empty-cart">Seu carrinho está vazio.</li>';
+        totalSection.textContent = '';
+        return;
+      }
+
+      cartItems.forEach(item => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <span class="item-name">${item.name}</span>
+          <span class="item-qtd">Qtd: ${item.qtd}</span>
+          <span class="item-price">R$ ${(item.price * item.qtd).toFixed(2)}</span>
+        `;
+        cartList.appendChild(li);
+        total += item.price * item.qtd;
+      });
+
+      totalSection.textContent = `Total: R$ ${total.toFixed(2)}`;
+    }
+
+    function calculateShipping() {
+      const cep = document.getElementById('cep').value.trim();
+      const shippingCostDiv = document.getElementById('shippingCost');
+      if (!cep || cep.length < 8) {
+        shippingCostDiv.textContent = "Digite um CEP válido.";
+        shippingCostDiv.style.color = "#e74c3c";
+        return;
+      }
+      
+      let shipping = 0;
+      if (cep.startsWith("57")) {
+        shipping = 10.00;
+      } else if (cep.startsWith("01") || cep.startsWith("02")) {
+        shipping = 25.00;
+      } else {
+        shipping = 40.00;
+      }
+      shippingCostDiv.textContent = `Frete: R$ ${shipping.toFixed(2)}`;
+      shippingCostDiv.style.color = "#357ae8";
+    }
+
+    function finalizePurchase() {
+      alert("Compra finalizada com sucesso! Obrigado por comprar conosco.");
+    }
+
+    window.onload = renderCart;
+  </script>
+</body>
+</html>
