@@ -401,3 +401,8 @@ h2 {
     gap: 0.5rem;
   }
 }
+textarea {
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  resize: vertical;
+}
