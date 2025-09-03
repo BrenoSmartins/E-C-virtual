@@ -473,11 +473,13 @@ textarea {
         .login-form input[type="email"],
         .login-form input[type="password"] {
             width: 100%;
-            padding: 0.7rem;
-            margin-bottom: 1rem;
+            max-width: 280px;
+            margin-left: auto;
+            margin-right: auto;
             border: 1px solid #bbb;
             border-radius: 4px;
             font-size: 1rem;
+            display: block;
         }
         .remember-row {
             display: flex;
@@ -486,6 +488,8 @@ textarea {
         }
         .remember-row input[type="checkbox"] {
             margin-right: 0.5rem;
+            align-items:flex-start ;
+            
         }
         .login-form button {
             background: #ff6600;
@@ -497,7 +501,9 @@ textarea {
             font-weight: bold;
             cursor: pointer;
             width: 100%;
-            margin-bottom: 1rem;
+            max-width: 280px;
+            margin-left: auto;
+            margin-right: auto;
             transition: background 0.2s;
         }
         .login-form button:hover {
@@ -506,22 +512,23 @@ textarea {
         .login-form .lost-password {
             display: block;
             margin-bottom: 1.2rem;
-            color: #357ae8;
+            color: #ffffff;
             text-decoration: none;
             font-size: 0.98rem;
             text-align: right;
         }
         .login-form .lost-password:hover {
-            text-decoration: underline;
+            text-decoration: none;
+            font-weight: bold;
         }
         .login-form .terms {
             font-size: 0.85rem;
-            color: #888;
+            color: #ffffff;
             margin-top: 1.2rem;
             text-align: center;
         }
         .login-form .terms a {
-            color: #357ae8;
+            color: #ffffff;
             text-decoration: none;
         }
         .login-form .terms a:hover {
