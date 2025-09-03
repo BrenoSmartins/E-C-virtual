@@ -512,7 +512,7 @@ textarea {
         .login-form .lost-password {
             display: block;
             margin-bottom: 1.2rem;
-            color: #357ae8;
+            color: #000000;
             text-decoration: none;
             font-size: 0.98rem;
             text-align: right;
@@ -523,12 +523,12 @@ textarea {
         }
         .login-form .terms {
             font-size: 0.85rem;
-            color: #357ae8;
+            color: #000000;
             margin-top: 1.2rem;
             text-align: center;
         }
         .login-form .terms a {
-            color: #357ae8;
+            color: #000000;
             text-decoration: none;
         }
         .login-form .terms a:hover {
