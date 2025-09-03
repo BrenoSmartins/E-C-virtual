@@ -406,3 +406,145 @@ textarea {
   font-size: 1rem;
   resize: vertical;
 }
+
+.login-main-container {
+            background: rgba(0,0,0,0.55);
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+            display: flex;
+            max-width: 900px;
+            width: 95vw;
+            min-height: 480px;
+            overflow: hidden;
+        }
+        .login-left {
+            flex: 1.2;
+            color: #fff;
+            padding: 3rem 2rem 3rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .login-left h1 {
+            font-size: 2.8rem;
+            margin: 0 0 1rem 0;
+            font-weight: bold;
+        }
+        .login-left p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #e0e0e0;
+        }
+        .login-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .login-social a {
+            color: #fff;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .login-social a:hover {
+            color: #4f9dff;
+        }
+        .login-right {
+            flex: 1;
+            background: rgba(255,255,255,0.97);
+            padding: 3rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 320px;
+        }
+        .login-right h2 {
+            color: #357ae8;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            font-size: 2rem;
+        }
+        .login-form label {
+            color: #333;
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+            display: block;
+        }
+        .login-form input[type="email"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 0.7rem;
+            margin-bottom: 1rem;
+            border: 1px solid #bbb;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .remember-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .remember-row input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+        .login-form button {
+            background: #ff6600;
+            color: #fff;
+            border: none;
+            padding: 0.8rem 0;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 1rem;
+            transition: background 0.2s;
+        }
+        .login-form button:hover {
+            background: #e65c00;
+        }
+        .login-form .lost-password {
+            display: block;
+            margin-bottom: 1.2rem;
+            color: #357ae8;
+            text-decoration: none;
+            font-size: 0.98rem;
+            text-align: right;
+        }
+        .login-form .lost-password:hover {
+            text-decoration: underline;
+        }
+        .login-form .terms {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 1.2rem;
+            text-align: center;
+        }
+        .login-form .terms a {
+            color: #357ae8;
+            text-decoration: none;
+        }
+        .login-form .terms a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 800px) {
+            .login-main-container {
+                flex-direction: column;
+                min-height: unset;
+            }
+            .login-left, .login-right {
+                padding: 2rem 1rem;
+            }
+        }
+        @media (max-width: 500px) {
+            .login-main-container {
+                border-radius: 0;
+                box-shadow: none;
+            }
+            .login-left h1 {
+                font-size: 2rem;
+            }
+            .login-right h2 {
+                font-size: 1.3rem;
+            }
+        }

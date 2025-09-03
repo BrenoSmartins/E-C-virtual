@@ -1,42 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <title>Login - E-C virtual</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    <!-- Ícones de redes sociais (Font Awesome CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="logo-ecvirtual">
-            <span class="logo-e">E</span>
-            <span class="logo-hifen">-</span>
-            <span class="logo-c">C</span>
-            <span class="logo-virtual">virtual</span>
+    <div class="login-main-container">
+        <div class="login-left">
+            <h1>Welcome<br>Back</h1>
+            <p>
+                É um fato estabelecido que um leitor se distrairá com o conteúdo legível de uma página ao examinar seu layout.<br>
+                O ponto de usar...
+            </p>
+            <div class="login-social">
+                <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
         </div>
-    </header>
-    <nav>
-        <span>Bem-vindo! Faça login para continuar.</span>
-    </nav>
-   <div class="login-container">
-        <h2>Login</h2>
-        <form action="home.html" method="get" autocomplete="on">
-            <div class="form-group">
-                <label for="email">Email:</label>
+        <div class="login-right">
+            <h2>Sign in</h2>
+            <form class="login-form" action="home.html" method="get" autocomplete="on">
+                <label for="email">Email Address</label>
                 <input type="email" id="email" name="email" required autocomplete="username">
-            </div>
-            <div class="form-group">
-                <label for="password">Senha:</label>
+                <label for="password">Password</label>
                 <input type="password" id="password" name="password" required autocomplete="current-password">
-            </div>
-            <div class="actions">
-                <button type="submit">Entrar</button>
-                <span class="register-link">Não tem conta? <a href="register.html">Cadastre-se</a></span>
-            </div>
-        </form>
+                <div class="remember-row">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember" style="margin:0;">Remember Me</label>
+                </div>
+                <button type="submit">Sign in now</button>
+                <a href="#" class="lost-password">Lost your password?</a>
+                <div class="terms">
+                    By clicking on "Sign in now" you agree to<br>
+                    <a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a>
+                </div>
+            </form>
+        </div>
     </div>
-    <footer>
-        <span>&copy; 2025 E-C virtual</span>
-    </footer>
 </body>
 </html>
