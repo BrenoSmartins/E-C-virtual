@@ -523,12 +523,12 @@ textarea {
         }
         .login-form .terms {
             font-size: 0.85rem;
-            color: #000000;
+            color: #0a4ad3;
             margin-top: 1.2rem;
             text-align: center;
         }
         .login-form .terms a {
-            color: #000000;
+            color: #0a4ad3;
             text-decoration: none;
         }
         .login-form .terms a:hover {
