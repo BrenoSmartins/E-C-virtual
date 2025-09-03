@@ -63,7 +63,7 @@ nav {
   font-weight: bold;
   color: #fff;
 }
-nav a {
+.nav-links a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
@@ -71,7 +71,7 @@ nav a {
   border-radius: 4px;
   transition: background 0.2s;
 }
-nav a:hover {
+.nav-links a:hover {
   background: #285bb5;
   text-decoration: underline;
 }
