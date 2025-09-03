@@ -19,10 +19,10 @@ nav {
   align-items: center;
   justify-content: space-between;
 }
-.nav-logo img {
-  height: 42px;
-  width: auto;
-  display: block;
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
 }
 .nav-links {
   display: flex;
