@@ -507,12 +507,12 @@ textarea {
             transition: background 0.2s;
         }
         .login-form button:hover {
-            background: #e65c00;
+            background: #357ae8;
         }
         .login-form .lost-password {
             display: block;
             margin-bottom: 1.2rem;
-            color: #ffffff;
+            color: #357ae8;
             text-decoration: none;
             font-size: 0.98rem;
             text-align: right;
@@ -523,12 +523,12 @@ textarea {
         }
         .login-form .terms {
             font-size: 0.85rem;
-            color: #ffffff;
+            color: #357ae8;
             margin-top: 1.2rem;
             text-align: center;
         }
         .login-form .terms a {
-            color: #ffffff;
+            color: #357ae8;
             text-decoration: none;
         }
         .login-form .terms a:hover {
