@@ -9,17 +9,6 @@ body {
 }
 
 /* 
-   HEADER, FOOTER
-*/
-header, footer {
-  background: #4f9dff;
-  color: #fff;
-  padding: 1rem;
-  text-align: center;
-}
-
-
-/* 
    NAVEGAÇÃO
 */
 nav {
