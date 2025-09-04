@@ -17,36 +17,6 @@ header, footer {
   padding: 1rem;
   text-align: center;
 }
-.logo-ecvirtual {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  font-weight: bold;
-  font-size: 2.2rem;
-  letter-spacing: 0.05em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.3em;
-}
-.logo-e, .logo-c {
-  color: #003366;
-  font-size: 2.5rem;
-}
-.logo-hifen {
-  color: #222;
-  font-size: 2rem;
-  margin: 0 0.1em;
-}
-.logo-virtual {
-  color: #fff;
-  background: #357ae8;
-  border-radius: 0.3em;
-  padding: 0.1em 0.4em;
-  font-size: 1.2rem;
-  margin-left: 0.3em;
-  font-weight: normal;
-  letter-spacing: 0.01em;
-}
-
 /* 
    NAVEGAÇÃO
 */
@@ -218,9 +188,9 @@ main {
   text-decoration: underline;
 }
 
-/* =========================
+/* 
    LOGIN (Telas simples)
-========================= */
+*/
 .login-container {
   max-width: 400px;
   margin: 3rem auto;
@@ -286,9 +256,9 @@ button {
   text-decoration: underline;
 }
 
-/* =========================
+/* 
    CARTÃO DO DESENVOLVEDOR
-========================= */
+*/
 .dev-card {
   background: #fff;
   padding: 2rem;
@@ -326,9 +296,9 @@ button {
   text-decoration: underline;
 }
 
-/* =========================
+/* 
    USUÁRIO
-========================= */
+*/
 .user-card {
   background: #fff;
   padding: 2rem;
@@ -359,9 +329,9 @@ button {
   font-size: 1rem;
 }
 
-/* =========================
+/* 
    CARRINHO
-========================= */
+*/
 .cart-section {
   background: #fff;
   padding: 1.5rem;
@@ -457,9 +427,9 @@ button {
   background: #357ae8;
 }
 
-/* =========================
+/* 
    PRODUTOS E PERFIL
-========================= */
+ */
 h2 {
   color: #357ae8;
   margin-bottom: 1.5rem;
@@ -510,18 +480,18 @@ h2 {
   color: #333;
 }
 
-/* =========================
+/* 
    TEXTAREA (Contato)
-========================= */
+*/
 textarea {
   font-family: Arial, sans-serif;
   font-size: 1rem;
   resize: vertical;
 }
 
-/* =========================
+/* 
    RESPONSIVIDADE
-========================= */
+*/
 @media (max-width: 800px) {
   .login-main-container {
     flex-direction: column;
@@ -596,4 +566,20 @@ textarea {
   .nav-logo img {
     height: 32px;
   }
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex: 1 0 auto;
+}
+footer {
+  flex-shrink: 0;
 }
