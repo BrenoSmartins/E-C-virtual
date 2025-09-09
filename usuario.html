@@ -7,37 +7,28 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    
-  </header>
-
+  <header></header>
   <nav>
-  <div class="nav-logo">
-  E-C virtual
-</div>
-  <div class="nav-links">
-    <a href="home.html">Home</a>
-    <a href="perfil.html">Perfil</a>
-    <a href="contato.html">Contato</a>
-    <a href="usuario.html">Usuário</a>
-    <a href="index.html">Sair</a>
-  </div>
+    <div class="nav-logo">E-C virtual</div>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="perfil.html">Perfil</a>
+      <a href="contato.html">Contato</a>
+      <a href="#" id="usuarioLink">Usuário</a>
+      <a href="index.html">Sair</a>
+    </div>
   </nav>
-
   <main>
     <div class="user-card">
       <img src="https://avatars.githubusercontent.com/u/114893803?v=4" alt="Foto do Usuário">
       <h2>Fulano</h2>
-      <div class="user-info"><strong>Email:</strong> fulano@email.com</div>
+      <div class="user-info"><strong>Email:</strong> <span id="userEmail"></span></div>
       <div class="user-info"><strong>Telefone:</strong> (82) 91234-5678</div>
       <div class="user-info"><strong>Endereço:</strong> Rua Exemplo, 123, Maceió-AL</div>
     </div>
-
     <section class="cart-section">
       <h3>Meu Carrinho</h3>
-      <ul class="cart-list" id="cartList">
-
-      </ul>
+      <ul class="cart-list" id="cartList"></ul>
       <div class="total-section" id="totalSection"></div>
       <div class="shipping-section">
         <label for="cep">Calcule o frete (CEP):</label>
@@ -48,20 +39,16 @@
       <button class="purchase-btn" onclick="finalizePurchase()">Finalizar Compra</button>
     </section>
   </main>
-
   <footer>
     <span>&copy; 2025 E-C virtual</span>
   </footer>
-
   <script>
-    
-    const cartItems = [
-      { name: "Sofá Retrátil", qtd: 1, price: 1200.00 },
-      { name: "Smart TV 50''", qtd: 1, price: 2500.00 },
-      { name: "Fone Bluetooth", qtd: 2, price: 150.00 }
-    ];
+    function getCartItems() {
+      return JSON.parse(localStorage.getItem('cart')) || [];
+    }
 
     function renderCart() {
+      const cartItems = getCartItems();
       const cartList = document.getElementById('cartList');
       const totalSection = document.getElementById('totalSection');
       cartList.innerHTML = '';
@@ -95,7 +82,7 @@
         shippingCostDiv.style.color = "#e74c3c";
         return;
       }
-      
+
       let shipping = 0;
       if (cep.startsWith("57")) {
         shipping = 10.00;
@@ -112,7 +99,17 @@
       alert("Compra finalizada com sucesso! Obrigado por comprar conosco.");
     }
 
-    window.onload = renderCart;
+    window.onload = function() {
+      renderCart();
+      // Pega o email da URL e mostra na página
+      const params = new URLSearchParams(window.location.search);
+      const email = params.get('email');
+      if (email) {
+        document.getElementById('userEmail').textContent = email;
+      } else {
+        document.getElementById('userEmail').textContent = "fulano@email.com";
+      }
+    };
   </script>
 </body>
 </html>

@@ -38,7 +38,7 @@
         </div>
         <div class="login-right">
             <h2>Entre...</h2>
-            <form class="login-form" action="home.html" method="get" autocomplete="on">
+            <form class="login-form" onsubmit="return goToHomeWithEmail()" method="get" autocomplete="on">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required autocomplete="username">
                 <label for="password">Senha</label>
@@ -54,6 +54,13 @@
                     <a href="#">Termo de serviço</a> | <a href="#">Politica de privacidade</a>
                 </div>
             </form>
+                <script>
+                    function goToHomeWithEmail() {
+                    const email = document.getElementById('email').value;
+                    window.location.href = `home.html?email=${encodeURIComponent(email)}`;
+                    return false; // impede envio padrão
+                    }
+                </script>
         </div>
     </div>
 </body>

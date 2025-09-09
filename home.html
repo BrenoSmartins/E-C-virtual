@@ -20,7 +20,7 @@
     <a href="home.html">Home</a>
     <a href="perfil.html">Perfil</a>
     <a href="contato.html">Contato</a>
-    <a href="usuario.html">Usuário</a>
+    <a href="#" id="usuarioLink">Usuário</a>
     <a href="index.html">Sair</a>
   </div>
   </nav>
@@ -37,74 +37,101 @@
   </footer>
 
 <script>
-const products = [
-  {
-    name: "Sofá Retrátil",
-    category: "Casa",
-    description: "Confortável e moderno para sua sala.",
-    price: 1200.00,
-    image: "https://img.icons8.com/color/100/sofa.png"
-  },
-  {
-    name: "Smart TV 50''",
-    category: "Eletrônicos",
-    description: "Resolução 4K, acesso a apps e streaming.",
-    price: 2500.00,
-    image: "https://img.icons8.com/color/100/tv.png"
-  },
-  {
-    name: "Fone Bluetooth",
-    category: "Eletrônicos",
-    description: "Som de alta qualidade e bateria duradoura.",
-    price: 150.00,
-    image: "https://img.icons8.com/color/100/headphones.png"
-  },
-  {
-    name: "Mala de Viagem",
-    category: "Viagem",
-    description: "Resistente, leve e com rodinhas 360º.",
-    price: 300.00,
-    image: "https://img.icons8.com/color/100/suitcase.png"
-  },
-  {
-    name: "Cafeteira Elétrica",
-    category: "Casa",
-    description: "Prepare cafés deliciosos rapidamente.",
-    price: 200.00,
-    image: "https://img.icons8.com/color/100/coffee-maker.png"
-  },
-  {
-    name: "Guia de Viagem Europa",
-    category: "Viagem",
-    description: "Dicas e roteiros para sua próxima aventura.",
-    price: 80.00,
-    image: "https://img.icons8.com/color/100/map.png"
+    const products = [
+      {
+        name: "Sofá Retrátil",
+        category: "Casa",
+        description: "Confortável e moderno para sua sala.",
+        price: 1200.00,
+        image: "https://img.icons8.com/color/100/sofa.png"
+      },
+      {
+        name: "Smart TV 50''",
+        category: "Eletrônicos",
+        description: "Resolução 4K, acesso a apps e streaming.",
+        price: 2500.00,
+        image: "https://img.icons8.com/color/100/tv.png"
+      },
+      {
+        name: "Fone Bluetooth",
+        category: "Eletrônicos",
+        description: "Som de alta qualidade e bateria duradoura.",
+        price: 150.00,
+        image: "https://img.icons8.com/color/100/headphones.png"
+      },
+      {
+        name: "Mala de Viagem",
+        category: "Viagem",
+        description: "Resistente, leve e com rodinhas 360º.",
+        price: 300.00,
+        image: "https://img.icons8.com/color/100/suitcase.png"
+      },
+      {
+        name: "Cafeteira Elétrica",
+        category: "Casa",
+        description: "Prepare cafés deliciosos rapidamente.",
+        price: 200.00,
+        image: "https://img.icons8.com/color/100/coffee-maker.png"
+      },
+      {
+        name: "Guia de Viagem Europa",
+        category: "Viagem",
+        description: "Dicas e roteiros para sua próxima aventura.",
+        price: 80.00,
+        image: "https://img.icons8.com/color/100/map.png"
+      }
+    ];
+
+  function renderProducts() {
+    const grid = document.getElementById('productsGrid');
+    grid.innerHTML = '';
+    products.forEach(product => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <img src="${product.image}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <span><strong>Categoria:</strong> ${product.category}</span>
+        <p>${product.description}</p>
+        <span><strong>Preço:</strong> R$ ${product.price.toFixed(2)}</span>
+        <button onclick="addToCart('${product.name}')">Adicionar ao carrinho</button>
+      `;
+      grid.appendChild(card);
+    });
   }
-];
 
-function renderProducts() {
-  const grid = document.getElementById('productsGrid');
-  grid.innerHTML = '';
-  products.forEach(product => {
-    const card = document.createElement('div');
-    card.className = 'product-card';
-    card.innerHTML = `
-      <img src="${product.image}" alt="${product.name}">
-      <h3>${product.name}</h3>
-      <span><strong>Categoria:</strong> ${product.category}</span>
-      <p>${product.description}</p>
-      <span><strong>Preço:</strong> R$ ${product.price.toFixed(2)}</span>
-      <button onclick="addToCart('${product.name}')">Adicionar ao carrinho</button>
-    `;
-    grid.appendChild(card);
-  });
-}
+      function addToCart(productName) {
+        // Busca o produto pelo nome
+        const product = products.find(p => p.name === productName);
+        if (!product) return;
 
-function addToCart(productName) {
-  alert(`"${productName}" adicionado ao carrinho!`);
-}
+        // Recupera o carrinho atual do localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-window.onload = renderProducts;
+        // Verifica se o produto já está no carrinho
+        const existing = cart.find(item => item.name === productName);
+        if (existing) {
+          existing.qtd += 1;
+        } else {
+          cart.push({ name: product.name, qtd: 1, price: product.price });
+        }
+
+        // Salva o carrinho atualizado
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`${productName} adicionado ao carrinho!`);
+      }
+
+      window.onload = renderProducts;
+
+      window.onload = function() {
+        renderProducts();
+        // Mantém o email ao navegar para usuario.html
+        const params = new URLSearchParams(window.location.search);
+        const email = params.get('email');
+        document.getElementById('usuarioLink').onclick = function() {
+          window.location.href = `usuario.html?email=${encodeURIComponent(email)}`;
+        };
+  };
 </script>
 </body>
 </html>
