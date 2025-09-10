@@ -101,14 +101,14 @@
   }
 
       function addToCart(productName) {
-        // Busca o produto pelo nome
+        
         const product = products.find(p => p.name === productName);
         if (!product) return;
 
-        // Recupera o carrinho atual do localStorage
+        
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        // Verifica se o produto já está no carrinho
+        
         const existing = cart.find(item => item.name === productName);
         if (existing) {
           existing.qtd += 1;
@@ -116,7 +116,7 @@
           cart.push({ name: product.name, qtd: 1, price: product.price });
         }
 
-        // Salva o carrinho atualizado
+        
         localStorage.setItem('cart', JSON.stringify(cart));
         alert(`${productName} adicionado ao carrinho!`);
       }
@@ -125,7 +125,7 @@
 
       window.onload = function() {
         renderProducts();
-        // Mantém o email ao navegar para usuario.html
+        
         const params = new URLSearchParams(window.location.search);
         const email = params.get('email');
         document.getElementById('usuarioLink').onclick = function() {
